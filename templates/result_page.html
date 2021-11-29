@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section" id="ali">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Kết quả</h2>
+
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+
+        <!-- Contact Section Form-->
+        {% if result %}
+            <div class="row">
+                <div class="col-sm-8 mx-auto">
+                    <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
+                    <table class="table table-hover">
+                        <thead>
+                            <th>Nhãn thời gian</th>
+                            {% for i in result.keys() %}
+                            <th>Tiến trình {{i}}</th>
+                            {% endfor %}
+                        </thead>
+                        <tbody>
+                            {% for i in range(result.get(1) | length) %}
+                            <tr>
+                                <th>{{i}}</th>
+                                {% for key in result.keys() %}
+                                    <td>{{result.get(key)[i]}}</td>
+                                {% endfor %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <a type="submit" class="btn btn-lg btn-block btn-outline-primary" href="/vector_time">Trở lại</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+
+{% endblock %}

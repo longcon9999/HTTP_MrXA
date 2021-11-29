@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section" id="ali">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Giải thuật Berkeley</h2>
+
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        {% if Error %}
+            <div class="col-sm-8 mx-auto text-center">
+                <span style="color:red; font-weight:bold">Lỗi {{Error}}! <br>Vui lòng kiểm tra và thử lại</span>
+            </div>
+        {% endif %}
+        {% if result %}
+            <div class="col-sm-8 mx-auto text-center">
+                <span style="color:green; font-weight:bold">Đáp án: {{result}}</span>
+            </div>
+        {% endif %}
+        <!-- Contact Section Form-->
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <form action="/berkeley" method="POST">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="time_server">Điều phối</label>
+                                <input class="form-control" type="text" id="time_server" name="time_server" placeholder="Điều phối" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="client_1">Khách 1</label>
+                                <input class="form-control" type="text" id="client_1" name="client_1" placeholder="Khách 1" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="client_2">Khách 2</label>
+                                <input class="form-control" type="text" id="client_2" name="client_2" placeholder="Khách 2" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-xl" type="submit">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

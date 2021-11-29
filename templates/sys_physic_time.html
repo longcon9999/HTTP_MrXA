@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section" id="ali">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Đồng bộ thời gian vật lý</h2>
+
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        {% if Error %}
+            <div class="col-sm-8 mx-auto text-center">
+                <span style="color:red; font-weight:bold">Lỗi {{Error}}! <br>Vui lòng kiểm tra và thử lại</span>
+            </div>
+        {% endif %}
+        {% if result %}
+            <div class="col-sm-8 mx-auto text-center">
+                <span style="color:green; font-weight:bold">Đáp án: {{result}}</span>
+            </div>
+        {% endif %}
+        <!-- Contact Section Form-->
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <form action="/sys_physic_time" method="POST">
+                    <label class="text-primary">Máy khách</label>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="time_send_client">Thời gian gửi</label>
+                                <input class="form-control" type="text" id="time_send_client" name="time_send_client" placeholder="Thời gian gửi" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="time_received_client">Thời gian nhận</label>
+                                <input class="form-control" type="text" id="time_received_client" name="time_received_client" placeholder="Thời gian nhận" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <label class="text-primary">Máy chủ</label>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="time_received_server">Thời gian nhận</label>
+                                <input class="form-control" type="text" id="time_received_server" name="time_received_server" placeholder="Thời gian nhận" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="time_send_server">Thời gian gửi</label>
+                                <input class="form-control" type="text" id="time_send_server" name="time_send_server" placeholder="Thời gian gửi" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-xl" type="submit">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

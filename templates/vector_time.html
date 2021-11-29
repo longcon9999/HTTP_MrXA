@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="page-section" id="ali">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nhãn thời gian vector</h2>
+
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        {% if Error %}
+            <div class="col-sm-8 mx-auto text-center">
+                <span style="color:red; font-weight:bold">Lỗi {{Error}}! <br>Vui lòng kiểm tra và thử lại</span>
+            </div>
+        {% endif %}
+        <!-- Contact Section Form-->
+        <div class="row">
+            <div class="col-sm-8 mx-auto">
+                <form action="/vector_time" method="POST">
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="num_process">Số sự kiện</label>
+                                <input class="form-control" type="text" id="num_events" name="num_events" placeholder="Số sự kiện" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="num_process">Số tiến trình</label>
+                                <input class="form-control" type="text" id="num_process" name="num_process" placeholder="Số tiến trình" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="fill_process" onclick="addProcess()">Generate</a>
+                    <div id="container_process"></div>
+                    <div class="control-group">
+                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
+                            <div class="form-group col-md">
+                                <label for="num_message">Số thông điệp</label>
+                                <input class="form-control" type="text" id="num_message" name="num_message" placeholder="Số thông điệp" required/>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" id="fill_connection" onclick="addConnect()">Generate</a>
+                    <div id="container_message"></div>
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-xl" type="submit">Xác nhận</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function addProcess() {
+        const number = document.getElementById("num_process").value;
+        const container = document.getElementById("container_process");
+        // Clear previous contents of the container
+        container.innerHTML = "";
+
+        for (i = 0; i < number; i++) {
+          container.innerHTML += `
+				<div class="control-group">
+				    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Tiến trình ${i + 1}</label>
+                        <input class="form-control" type="text" id="process${i}" name="process${i}" placeholder="Tiến trình ${i+1}"/>
+                    </div>
+                </div>
+				`;
+        }
+      }
+    function addConnect() {
+        const number = document.getElementById("num_message").value;
+        const container = document.getElementById("container_message");
+        // Clear previous contents of the container
+        container.innerHTML = "";
+
+        for (i = 0; i < number; i++) {
+          container.innerHTML += `
+				<div class="control-group">
+				    <div class="form-group floating-label-form-group controls mb-0 pb-2">
+                        <label>Thông điệp ${i + 1}</label>
+                        <input class="form-control" type="text" id="mess${i}" name="mess${i}" placeholder="Thông điệp ${i+1}"/>
+                    </div>
+                </div>
+				`;
+        }
+      }
+</script>
+
+
+{% endblock %}
