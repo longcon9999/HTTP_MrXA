@@ -4,7 +4,7 @@
 <section class="page-section" id="ali">
     <div class="container">
         <!-- Contact Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nhãn thời gian vector</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nhãn thời gian Lamport</h2>
 
         <!-- Icon Divider-->
         <div class="divider-custom">
@@ -20,15 +20,7 @@
         <!-- Contact Section Form-->
         <div class="row">
             <div class="col-sm-8 mx-auto">
-                <form action="/vector_time" method="POST">
-                    <div class="control-group">
-                        <div class="form-group floating-label-form-group controls mb-0 pb-8">
-                            <div class="form-group col-md">
-                                <label for="num_events">Số sự kiện</label>
-                                <input class="form-control" type="text" id="num_events" name="num_events" placeholder="Số sự kiện" required/>
-                            </div>
-                        </div>
-                    </div>
+                <form action="/lamport" method="POST">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-8">
                             <div class="form-group col-md">
@@ -76,7 +68,7 @@
 				`;
         }
       }
-    function addConnect() {
+      function addConnect() {
         const number = document.getElementById("num_message").value;
         const container = document.getElementById("container_message");
         // Clear previous contents of the container

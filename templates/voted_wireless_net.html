@@ -4,7 +4,7 @@
 <section class="page-section" id="ali">
     <div class="container">
         <!-- Contact Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Giải thuật Berkeley</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Bầu chọn trong mạng không dây</h2>
 
         <!-- Icon Divider-->
         <div class="divider-custom">
@@ -20,28 +20,28 @@
         <!-- Contact Section Form-->
         <div class="row">
             <div class="col-sm-8 mx-auto">
-                <form action="/berkeley" method="POST">
+                <form action="/voted_wireless" method="POST">
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-8">
                             <div class="form-group col-md">
-                                <label for="time_server">Điều phối</label>
-                                <input class="form-control" type="text" id="time_server" name="time_server" placeholder="Điều phối" required/>
+                                <label for="voted_values">Giá trị bầu chọn</label>
+                                <input class="form-control" type="text" id="voted_values" name="voted_values" placeholder="Điền giá trị bầu chọn dạng 'tên, giá trị;'" required/>
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-8">
                             <div class="form-group col-md">
-                                <label for="client_1">Khách 1</label>
-                                <input class="form-control" type="text" id="client_1" name="client_1" placeholder="Khách 1" required/>
+                                <label for="conn">Các kết nối</label>
+                                <input class="form-control" type="text" id="conn" name="conn" placeholder="Điền các kết nối cách nhau dấu ;" required/>
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="form-group floating-label-form-group controls mb-0 pb-8">
                             <div class="form-group col-md">
-                                <label for="client_2">Khách 2</label>
-                                <input class="form-control" type="text" id="client_2" name="client_2" placeholder="Khách 2" required/>
+                                <label for="message">Thông điệp</label>
+                                <input class="form-control" type="text" id="message" name="message" placeholder="Điền thông điệp cách nhau dấu ;" required/>
                             </div>
                         </div>
                     </div>
@@ -53,29 +53,27 @@
             </div>
         </div>
         <p></p>
-        {% if result %}
+        {% if results %}
             <div class="row">
                 <div class="col-sm-8 mx-auto">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19.-->
                     <table class="table table-hover">
                         <thead>
+                            <th>Thông điệp</th>
                             <th>Tiến trình</th>
-                            <th>Thời gian</th>
-                            <th>Điều chỉnh</th>
                         </thead>
                         <tbody>
-                            {% for i in range((result | length) - 1) %}
+                            {% for k, v in results.get("data").items() %}
                             <tr>
-                                <th>{{result[i][0]}}</th>
-                                <td>{{result[i][1]}}</td>
-                                <td>{{result[i][2]}}</td>
+                                <th>{{k}}</th>
+                                <td>{{v}}</td>
                             </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
                 <div class="col-sm-8 mx-auto text-center">
-                    <span style="color:green; font-weight:bold">Thời gian điều chỉnh: {{ result[3] }}</span>
+                    <span style="color:green; font-weight:bold">Tiến trình được chon: {{ results.get("final") }}</span>
                 </div>
             </div>
         {% endif %}
